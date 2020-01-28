@@ -1,0 +1,126 @@
+/*-----------------------------------------------
+//  Styles - Table of Contents:
+//
+//	1. Import
+//	2. Reset
+//	3. Modules 
+//	4. Base
+-----------------------------------------------*/
+
+/* --------------------------------------------
+1. Import
+-------------------------------------------- */
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,500,600|Source+Serif+Pro|Roboto&display=swap&subset=latin-ext');
+
+/* --------------------------------------------
+2. Media Query
+-------------------------------------------- */
+// Breadpoint
+$small: 768px;
+$medium: 992px;
+$large: 1140px;
+$xlarge: 1200px;
+$xxlarge: 1440px;
+
+// mixin
+@mixin small {
+  @media screen and (min-width: $medium) {
+    @content;
+  }
+}
+@mixin medium {
+  @media screen and (min-width: $large) {
+    @content;
+  }
+}
+@mixin large {
+  @media screen and  (min-width: $xlarge) {
+    @content;
+  }
+}
+@mixin xlarge {
+  @media screen and (min-width: $xxlarge) {
+    @content;
+  }
+}
+
+/* --------------------------------------------
+3. Base Setting
+-------------------------------------------- */
+html {
+  @include small {
+    font-size: 14px;
+    overflow-y:scroll;
+    -webkit-text-size-adjust:100%;
+  }
+  @include medium {
+    font-size: 18px;
+  }
+  body {
+    color: #111;
+    font-family: 'Noto Sans Japanese','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, sans-serif;;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    @include small {
+      a, img, .hover {
+        transition: .3s;
+        backface-visibility: hidden;
+        -webkit-text-decoration-skip: none;
+      }
+      a:hover, .hover:hover {
+        opacity: 0.7;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+/* --------------------------------------------
+4. Modules
+-------------------------------------------- */
+.font-attention {
+  color: #d40e0e;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+@include small {
+  .container {
+    padding: 0 1em;
+  }
+  .container.sp-full {
+      padding: 0;
+  }
+}
+@include medium {
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+  .container.pc-narrow {
+    max-width: 750px;
+  }
+}
+
+@include small {
+  .only-for-pc {
+    display: none;
+  }
+}
+@include medium {
+  .only-for-sp {
+    display: none !important;
+  }
+  .only-for-pc {
+    display: block;
+  }
+}
+
+
