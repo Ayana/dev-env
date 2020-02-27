@@ -1,86 +1,136 @@
 /*-----------------------------------------------
-//  Styles - Table of Contents:
-//
-//	1. Import
-//	2. Reset
-//	3. Modules 
-//	4. Base
+//  Project Default Styles
+//  
+//  Table of Contents:
+//	1.Import
+//	2.Valuables
+//	3.Modules 
+//	4.Base
 -----------------------------------------------*/
 
 /* --------------------------------------------
-1. Import
+1.Import 
 -------------------------------------------- */
-@import url('https://fonts.googleapis.com/css?family=Barlow:400,500,600|Source+Serif+Pro|Roboto&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700|Lato:700,900&display=swap');
 
 /* --------------------------------------------
-2. Media Query
+2.Valuables
 -------------------------------------------- */
-// Breakpoint
+
+// Font
+$font-sans-serif: 'Lato', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo',
+  メイリオ, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$font-11: 0.7rem;
+$font-12: 0.75rem;
+$font-13: 0.8rem;
+$font-14: 0.88rem;
+$font-15: 0.94rem;
+$font-16: 1rem;
+$font-17: 1.25rem;
+$font-18: 1.12rem;
+$font-20: 1.25rem;
+$font-22: 1.38rem;
+$font-24: 1.5rem;
+$font-26: 1.62rem;
+$font-28: 1.75rem;
+$font-30: 1.85rem;
+$font-32: 2rem;
+$font-36: 2.25rem;
+$font-40: 2.5rem;
+$font-50: 3.1rem;
+$font-58: 3.63rem;
+$font-60: 4.3rem;
+$font-70: 4.4rem;
+$font-104: 6.5rem;
+
+$bold: 800;
+$heavy: 900;
+
+// Media Query Breadpoint
+$xsmall: 320px;
 $small: 768px;
-$medium: 992px;
-$large: 1140px;
-$xlarge: 1200px;
-$xxlarge: 1440px;
+$medium: 880px;
+$large: 1080px;
+$xlarge: 1286px;
+$xxlarge: 1400px;
 
 // mixin
-@mixin small {
-  @media screen and (min-width: $medium) {
+@mixin mini {
+  @media screen and (max-width: $xsmall) {
     @content;
   }
 }
-@mixin medium {
-  @media screen and (min-width: $large) {
+@mixin mobile {
+  @media screen and (max-width: $small) {
     @content;
   }
 }
-@mixin large {
-  @media screen and  (min-width: $xlarge) {
-    @content;
-  }
-}
-@mixin xlarge {
-  @media screen and (min-width: $xxlarge) {
+@mixin desktop {
+  @media screen and (min-width: $small) {
     @content;
   }
 }
 
+// Color
+$color-kch: #009944;
+$color-accent: #fff100;
+$black: #1a1a1a;
+$white: #fff;
+$light-gray: #f1f1f1;
+$gray: #888;
+$dark-gray: #242424;
+$light-green: #e7f2ec;
+
 /* --------------------------------------------
-3. Base Setting
+3.Base Setting
 -------------------------------------------- */
 html {
-  @include small {
-    font-size: 14px;
-    overflow-y:scroll;
-    -webkit-text-size-adjust:100%;
+  // scroll-behavior: smooth;
+  @include mobile {
+    font-size: 90%;
   }
-  @include medium {
-    font-size: 18px;
+  @include mini {
+    font-size: 68%;
   }
   body {
-    color: #111;
-    font-family: 'Noto Sans Japanese','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, sans-serif;;
-    line-height: 1.6;
-    letter-spacing: 0.05em;
-    @include small {
-      a, img, .hover {
-        transition: .3s;
-        backface-visibility: hidden;
-        -webkit-text-decoration-skip: none;
+    color: $black;
+    font-family: $font-sans-serif;
+    letter-spacing: 0.01em;
+    header,
+    main,
+    footer {
+      @include desktop {
+        min-width: $large;
+        overflow: hidden;
       }
-      a:hover, .hover:hover {
+      @include mobile {
+        width: 100%;
+      }
+    }
+    a,
+    img {
+      color: $black;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    img {
+      width: 100%;
+    }
+    @include desktop {
+      a:hover,
+      ,
+      a img:hover {
         opacity: 0.7;
-        text-decoration: none;
       }
     }
   }
 }
 
 /* --------------------------------------------
-4. Modules
+4.Modules
 -------------------------------------------- */
-.font-attention {
-  color: #d40e0e;
-}
+// Align
 .text-left {
   text-align: left;
 }
@@ -91,36 +141,38 @@ html {
   text-align: right;
 }
 
-@include small {
-  .container {
-    padding: 0 1em;
-  }
-  .container.sp-full {
+// Container
+.container {
+  max-width: $large;
+  margin: 0 auto;
+  @include mobile {
+    padding: 0 1.5rem;
+    &.sp-full {
       padding: 0;
+    }
   }
 }
-@include medium {
-  .container {
-    max-width: 1024px;
-    margin: 0 auto;
-  }
-  .container.pc-narrow {
-    max-width: 750px;
+.container-wide {
+  max-width: $xlarge;
+  margin: 0 auto;
+}
+.container-narrow {
+  max-width: $medium;
+  margin: 0 auto;
+  @include mobile {
+    padding: 0 1.5rem;
   }
 }
 
-@include small {
-  .only-for-pc {
+// Visibility
+.only-for-desktop {
+  @include mobile {
     display: none;
   }
 }
-@include medium {
-  .only-for-sp {
-    display: none !important;
-  }
-  .only-for-pc {
-    display: block;
+.only-for-mobile {
+  display: none;
+  @include mobile {
+    display: block !important;
   }
 }
-
-

@@ -1,6 +1,7 @@
 /* --------------------------------------------
 Modern CSS reset
-https://github.com/hankchizljaw/modern-css-reset
+Last Updated: 2020-02-27
+Author: Ayaos work
 -------------------------------------------- */
 /* Box sizing rules */
 *,
@@ -9,28 +10,83 @@ https://github.com/hankchizljaw/modern-css-reset
   box-sizing: border-box;
 }
 
-/* Remove default padding */
-ul[class],
-ol[class] {
-  padding: 0;
-}
-
-/* Remove default margin */
+/* Remove default basic styles */
+html,
 body,
+div,
+span,
+object,
+iframe,
 h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 p,
-ul[class],
-ol[class],
-li,
-figure,
-figcaption,
 blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
 dl,
-dd {
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: middle;
+  background: transparent;
 }
 
 /* Set core body defaults */
@@ -42,14 +98,20 @@ body {
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
-ul[class],
-ol[class] {
+ul,
+ol {
   list-style: none;
 }
 
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+/* A elements default styles */
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  outline: 0;
+  vertical-align: middle;
+  background: transparent;
+  text-decoration-skip-ink: none;
 }
 
 /* Make images easier to work with */
@@ -69,6 +131,23 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+/* Remove table border styles */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Delete basic styles */
+del {
+  text-decoration: line-through;
+}
+
+/* Form vertical align */
+input,
+select {
+  vertical-align: middle;
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
