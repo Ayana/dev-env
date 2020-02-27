@@ -1,7 +1,6 @@
 /* --------------------------------------------
 Modern CSS reset
 Last Updated: 2020-02-27
-Author: Ayaos work
 -------------------------------------------- */
 /* Box sizing rules */
 *,
@@ -112,6 +111,7 @@ a {
   vertical-align: middle;
   background: transparent;
   text-decoration-skip-ink: none;
+  text-decoration: none;
 }
 
 /* Make images easier to work with */
