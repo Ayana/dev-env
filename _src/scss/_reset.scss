@@ -125,12 +125,17 @@ article > * + * {
   margin-top: 1em;
 }
 
-/* Inherit fonts for inputs and buttons */
+/* Default styles for inputs and buttons */
 input,
 button,
 textarea,
 select {
   font: inherit;
+  border: none;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  vertical-align: middle;
 }
 
 /* Remove table border styles */
@@ -142,12 +147,6 @@ table {
 /* Delete basic styles */
 del {
   text-decoration: line-through;
-}
-
-/* Form vertical align */
-input,
-select {
-  vertical-align: middle;
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
