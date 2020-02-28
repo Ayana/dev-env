@@ -88,6 +88,11 @@ video {
   background: transparent;
 }
 
+/* Set core html defaults */
+html {
+  font-size: 62.5%;
+}
+
 /* Set core body defaults */
 body {
   min-height: 100vh;
@@ -137,6 +142,7 @@ select {
   cursor: pointer;
   color: inherit;
   font: inherit;
+  font-size: 1.6rem;
   background: transparent;
   border: none;
   margin: 0;
