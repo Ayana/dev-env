@@ -130,6 +130,12 @@ input,
 button,
 textarea,
 select {
+[type='button'],
+[type='reset'],
+[type='submit'],
+[role='button'] {
+  cursor: pointer;
+  color: inherit;
   font: inherit;
   background: transparent;
   border: none;
