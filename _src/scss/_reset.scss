@@ -1,6 +1,6 @@
 /* --------------------------------------------
-Modern CSS reset
-Last Updated: 2020-02-27
+Ayaos Custom CSS reset
+Last Updated: 2020-03-01
 -------------------------------------------- */
 /* Box sizing rules */
 *,
@@ -10,87 +10,18 @@ Last Updated: 2020-02-27
 }
 
 /* Remove default basic styles */
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-strong,
-sub,
-sup,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video {
   margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
   font-size: 100%;
-  vertical-align: middle;
   background: transparent;
 }
 
 /* Set core html defaults */
 html {
-  font-size: 62.5%;
+  word-break: normal;
 }
 
 /* Set core body defaults */
@@ -98,7 +29,6 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -125,30 +55,36 @@ img {
   display: block;
 }
 
-/* Natural flow and rhythm in articles by default */
-article > * + * {
-  margin-top: 1em;
-}
-
-/* Default styles for inputs and buttons */
+/* Set default styles for inputs and buttons */
 input,
 button,
 textarea,
 select {
-[type='button'],
-[type='reset'],
-[type='submit'],
-[role='button'] {
-  cursor: pointer;
+  background: transparent;
+  border-radius: 0;
+  border: none;
   color: inherit;
   font: inherit;
   font-size: 1.6rem;
-  background: transparent;
-  border: none;
   margin: 0;
   padding: 0;
   -webkit-appearance: none;
+  -moz-appearance: none;
   vertical-align: middle;
+}
+select::-ms-expand {
+  display: none;
+}
+select::-ms-value {
+  color: currentColor;
+}
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  color: inherit;
+  font: inherit;
+}
+:focus {
+  outline: 0;
 }
 
 /* Remove table border styles */
@@ -160,14 +96,4 @@ table {
 /* Delete basic styles */
 del {
   text-decoration: line-through;
-}
-
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
