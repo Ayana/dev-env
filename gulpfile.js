@@ -30,7 +30,7 @@ function jsTask() {
     // .pipe(concat('app.js'))
     .pipe(babel({presets: ['@babel/preset-env'],}))
     .pipe(minify({ext: {min: '.js'},ignoreFiles: ['-min.js']}))
-    .pipe(dest('./dest/js'))
+    .pipe(dest('./dist/js'))
     .pipe(browserSync.stream())
   )
 }
@@ -48,7 +48,7 @@ function imageTask() {
         })
       ])
     )
-    .pipe(dest('./dest/images/'))
+    .pipe(dest('./dist/images/'))
 }
 
 // Reload function
@@ -61,12 +61,12 @@ function reloadBrowser(done) {
 function watchTask() {
 	browserSync.init({
 		server: {
-			baseDir: './dest/', //Destination folder
+			baseDir: './dist/', //Destination folder
 		},
 	})
   watch('./src/scss/**/*.scss', cssTask)
   watch('./src/js/*.js', jsTask)
-  watch('./dest/*.html').on('change', reloadBrowser)
+  watch('./dist/*.html').on('change', reloadBrowser)
   // watch('./src/images/*', imagemin); //Use when needed
   // watch('./dest/js/*.js').on('change', reloadBrowser); //Use when change js files directly
 }
@@ -76,5 +76,6 @@ exports.image = imageTask
 exports.style = cssTask
 exports.js = jsTask
 exports.watch = watchTask
+
 // Default task
 exports.default = series(parallel(cssTask, jsTask), watchTask)
