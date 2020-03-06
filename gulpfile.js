@@ -4,47 +4,40 @@ const sass = require('gulp-sass')
 // const concat = require('gulp-concat');
 const minify = require('gulp-minify')
 const autoprefixer = require('gulp-autoprefixer')
+const babel = require('gulp-babel')
 const browserSync = require('browser-sync').create()
 const imagemin = require('gulp-imagemin')
 const mozjpeg = require('imagemin-mozjpeg')
 const pngquant = require('imagemin-pngquant')
+// const babel = require('gulp-babel')
 
 // CSS bundle, minify task
 function cssTask() {
   return (
-    src('./_src/scss/app.scss')
-      // .pipe(sass().on('error', sass.logError))
-      .pipe(
-        sass({
-          outputStyle: 'compressed'
-        }).on('error', sass.logError)
-      )
+    src('./src/scss/app.scss')
+      .pipe(sass().on('error', sass.logError))
+      // .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
       .pipe(autoprefixer())
       .pipe(dest('./dest/css'))
       .pipe(browserSync.stream())
   )
 }
 
-// JS minify task
+// JS Babel & minify task
 function jsTask() {
   return (
-    src('./_src/js/**/*.js')
-      // .pipe(concat('app.js'))
-      .pipe(
-        minify({
-          ext: {
-            min: '.js'
-          },
-          ignoreFiles: ['-min.js']
-        })
-      )
-      .pipe(dest('./dest/js/'))
+    src('./src/js/**/*.js')
+    // .pipe(concat('app.js'))
+    .pipe(babel({presets: ['@babel/preset-env'],}))
+    .pipe(minify({ext: {min: '.js'},ignoreFiles: ['-min.js']}))
+    .pipe(dest('./dest/js'))
+    .pipe(browserSync.stream())
   )
 }
 
 // Image minify task
 function imageTask() {
-  return src('./_src/images/*')
+  return src('./src/images/*')
     .pipe(
       imagemin([
         pngquant({
@@ -58,18 +51,24 @@ function imageTask() {
     .pipe(dest('./dest/images/'))
 }
 
+// Reload function
+function reloadBrowser(done) {
+	browserSync.reload()
+	done()
+}
+
 // Watch task
 function watchTask() {
-  browserSync.init({
-    server: {
-      baseDir: './dest/' //Destination folder
-    }
-  })
-  // watch('./_src/images/*', imagemin); //Use when needed
-  watch('./_src/scss/**/*.scss', cssTask)
-  watch('./_src/js/*.js', series(jsTask, browserSync.reload))
-  watch('./dest/*.html').on('change', browserSync.reload)
-  // watch('./dest/js/*.js').on('change', browserSync.reload); //Use when change js files directly
+	browserSync.init({
+		server: {
+			baseDir: './dest/', //Destination folder
+		},
+	})
+  watch('./src/scss/**/*.scss', cssTask)
+  watch('./src/js/*.js', jsTask)
+  watch('./dest/*.html').on('change', reloadBrowser)
+  // watch('./src/images/*', imagemin); //Use when needed
+  // watch('./dest/js/*.js').on('change', reloadBrowser); //Use when change js files directly
 }
 
 // Export tasks
@@ -77,6 +76,5 @@ exports.image = imageTask
 exports.style = cssTask
 exports.js = jsTask
 exports.watch = watchTask
-
 // Default task
 exports.default = series(parallel(cssTask, jsTask), watchTask)

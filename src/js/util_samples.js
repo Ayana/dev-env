@@ -6,25 +6,25 @@ const genderInput2 = gender.getElementsByTagName('div')[1].getElementsByTagName(
 const genderOption = document.getElementsByName('gender')
 
 // 性別ラジオボタンの画像オンオフ切り替え
-const genderOption = document.getElementsByName('gender')
+// const genderOption = document.getElementsByName('gender')
 
-function activeImage() {
-  const genderOption1Input = genderOption[0]
+// function activeImage() {
+//   const genderOption1Input = genderOption[0]
   
-  if (genderOption1Input.checked == true) {
-		genderOption2Input.parentElement.classList.remove('active')
-		genderOption1Input.parentElement.classList.add('active')
-	} else {
-		genderOption1Input.parentElement.classList.remove('active')
-		genderOption2Input.parentElement.classList.add('active')
-	}
-}
+//   if (genderOption1Input.checked == true) {
+// 		genderOption2Input.parentElement.classList.remove('active')
+// 		genderOption1Input.parentElement.classList.add('active')
+// 	} else {
+// 		genderOption1Input.parentElement.classList.remove('active')
+// 		genderOption2Input.parentElement.classList.add('active')
+// 	}
+// }
 
-genderOption.forEach(function(e) {
-	e.addEventListener('click', function() {
-    activeImage()
-	})
-})
+// genderOption.forEach(function(e) {
+// 	e.addEventListener('click', function() {
+//     activeImage()
+// 	})
+// })
 
 
 // Get width
