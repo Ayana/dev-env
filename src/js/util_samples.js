@@ -20,6 +20,7 @@ const genderOption = document.getElementsByName('gender')
 // 	}
 // }
 
+
 // genderOption.forEach(function(e) {
 // 	e.addEventListener('click', function() {
 //     activeImage()
