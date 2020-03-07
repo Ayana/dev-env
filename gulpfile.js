@@ -52,12 +52,6 @@ function imageTask() {
 		.pipe(dest('./dist/images/'))
 }
 
-// Reload function
-function reloadBrowser(done) {
-	browserSync.reload()
-	done()
-}
-
 // Watch task
 function watchTask() {
 	browserSync.init({
@@ -67,7 +61,7 @@ function watchTask() {
 	})
 	watch('./src/scss/**/*.scss', cssTask)
 	watch('./src/js/*.js', jsTask)
-	watch('./dist/*.html').on('change', reloadBrowser)
+	watch('./dist/*.html').on('change', browserSync.reload)
 	// watch('./src/images/*', imagemin); //Use when needed
 	// watch('./dest/js/*.js').on('change', reloadBrowser); //Use when change js files directly
 }
