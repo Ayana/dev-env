@@ -1,7 +1,7 @@
 // const gulp = require('gulp');
 const { src, dest, task, watch, series, parallel } = require('gulp') //When use this line instead of above line, change method without [gulp.] ex. gulp.dest => dest
 const sass = require('gulp-sass')
-// const concat = require('gulp-concat');
+const concat = require('gulp-concat')
 const minify = require('gulp-minify')
 const autoprefixer = require('gulp-autoprefixer')
 const babel = require('gulp-babel')
@@ -15,10 +15,10 @@ const pngquant = require('imagemin-pngquant')
 function cssTask() {
 	return (
 		src('./src/scss/app.scss')
-			.pipe(sass().on('error', sass.logError))
-			// .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+			// .pipe(sass().on('error', sass.logError))
+			.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
 			.pipe(autoprefixer())
-			.pipe(dest('./dest/css'))
+			.pipe(dest('./dist/css'))
 			.pipe(browserSync.stream())
 	)
 }
@@ -27,9 +27,10 @@ function cssTask() {
 function jsTask() {
 	return (
 		src('./src/js/**/*.js')
-			// .pipe(concat('app.js'))
+			.pipe(concat('app.js'))
 			.pipe(babel({ presets: ['@babel/preset-env'] }))
-			.pipe(minify({ ext: { min: '.js' }, ignoreFiles: ['-min.js'] }))
+			.pipe(minify())
+			// .pipe(minify({ ext: { src: '-debug.js', min: '.js' }, ignoreFiles: ['-min.js'] }))
 			.pipe(dest('./dist/js'))
 			.pipe(browserSync.stream())
 	)
