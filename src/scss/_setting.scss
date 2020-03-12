@@ -20,53 +20,33 @@
 // Typography
 $font-sans-serif: -apple-system, BlinkMacSystemFont, 'Lato', 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'Meiryo', メイリオ, 'Helvetica Neue', Helvetica, sans-serif;
 
-$font-11: 0.7rem;
-$font-12: 0.75rem;
-$font-13: 0.8rem;
-$font-14: 0.88rem;
-$font-15: 0.94rem;
-$font-16: 1rem;
-$font-17: 1.25rem;
-$font-18: 1.12rem;
-$font-20: 1.25rem;
-$font-22: 1.38rem;
-$font-24: 1.5rem;
-$font-26: 1.62rem;
-$font-28: 1.75rem;
-$font-30: 1.85rem;
-$font-32: 2rem;
-$font-36: 2.25rem;
-$font-40: 2.5rem;
-$font-50: 3.1rem;
-$font-58: 3.63rem;
-$font-60: 4.3rem;
-$font-70: 4.4rem;
-$font-104: 6.5rem;
-
 $bold: 800;
 $heavy: 900;
 
 // Media Query Breadpoint
-$xsmall: 320px;
-$small: 768px;
-$medium: 880px;
-$large: 1080px;
+$small: 320px;
+$medium: 768px;
+$large: 1024px;
 $xlarge: 1286px;
-$xxlarge: 1400px;
 
 // mixin
-@mixin mini {
-	@media screen and (max-width: $xsmall) {
-		@content;
-	}
-}
-@mixin mobile {
+@mixin xsmall {
 	@media screen and (max-width: $small) {
 		@content;
 	}
 }
-@mixin desktop {
-	@media screen and (min-width: $small) {
+@mixin small {
+	@media screen and (max-width: $medium) {
+		@content;
+	}
+}
+@mixin medium {
+	@media screen and (min-width: $medium) {
+		@content;
+	}
+}
+@mixin large {
+	@media screen and (min-width: $large) {
 		@content;
 	}
 }
