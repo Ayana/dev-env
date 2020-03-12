@@ -18,8 +18,7 @@
 -------------------------------------------- */
 
 // Typography
-$font-sans-serif: -apple-system, BlinkMacSystemFont, 'Lato', 'Noto Sans JP', 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3', 'Meiryo', メイリオ, 'Helvetica Neue', Helvetica, sans-serif;
-
+$font-sans-serif: -apple-system, BlinkMacSystemFont, 'Lato', 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'Meiryo', メイリオ, 'Helvetica Neue', Helvetica, sans-serif;
 
 $font-11: 0.7rem;
 $font-12: 0.75rem;
@@ -57,19 +56,19 @@ $xxlarge: 1400px;
 
 // mixin
 @mixin mini {
-  @media screen and (max-width: $xsmall) {
-    @content;
-  }
+	@media screen and (max-width: $xsmall) {
+		@content;
+	}
 }
 @mixin mobile {
-  @media screen and (max-width: $small) {
-    @content;
-  }
+	@media screen and (max-width: $small) {
+		@content;
+	}
 }
 @mixin desktop {
-  @media screen and (min-width: $small) {
-    @content;
-  }
+	@media screen and (min-width: $small) {
+		@content;
+	}
 }
 
 // Color
@@ -86,45 +85,42 @@ $light-green: #e7f2ec;
 3.Base Setting
 -------------------------------------------- */
 html {
-  // scroll-behavior: smooth;
-  @include mobile {
-    font-size: 90%;
-  }
-  @include mini {
-    font-size: 68%;
-  }
-  body {
-    color: $black;
-    font-family: $font-sans-serif;
-    letter-spacing: 0.01em;
-    header,
-    main,
-    footer {
-      @include desktop {
-        min-width: $large;
-        overflow: hidden;
-      }
-      @include mobile {
-        width: 100%;
-      }
-    }
-    a,
-    img {
-      color: $black;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    img {
-      width: 100%;
-    }
-    @include desktop {
-      a:hover,
-      ,
-      a img:hover {
-        opacity: 0.7;
-      }
-    }
-  }
+	font-size: 62.5%;
+	width: 100%;
+	-webkit-print-color-adjust: exact; /*印刷用*/
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); /*iPhoneタップ時の半透明を消す*/
+	body {
+		color: $black;
+		font-family: $font-sans-serif;
+		letter-spacing: 0.01em;
+		header,
+		main,
+		footer {
+			@include desktop {
+				min-width: $large;
+				overflow: hidden;
+			}
+			@include mobile {
+				width: 100%;
+			}
+		}
+		a,
+		img {
+			color: $black;
+			text-decoration: none;
+			transition: all 0.3s;
+		}
+		img {
+			width: 100%;
+		}
+		@include desktop {
+			a:hover,
+			,
+			a img:hover {
+				opacity: 0.7;
+			}
+		}
+	}
 }
 
 /* --------------------------------------------
@@ -132,47 +128,47 @@ html {
 -------------------------------------------- */
 // Align
 .text-left {
-  text-align: left;
+	text-align: left;
 }
 .text-center {
-  text-align: center;
+	text-align: center;
 }
 .text-right {
-  text-align: right;
+	text-align: right;
 }
 
 // Container
 .container {
-  max-width: $large;
-  margin: 0 auto;
-  @include mobile {
-    padding: 0 1.5rem;
-    &.sp-full {
-      padding: 0;
-    }
-  }
+	max-width: $large;
+	margin: 0 auto;
+	@include mobile {
+		padding: 0 1.5rem;
+		&.sp-full {
+			padding: 0;
+		}
+	}
 }
 .container-wide {
-  max-width: $xlarge;
-  margin: 0 auto;
+	max-width: $xlarge;
+	margin: 0 auto;
 }
 .container-narrow {
-  max-width: $medium;
-  margin: 0 auto;
-  @include mobile {
-    padding: 0 1.5rem;
-  }
+	max-width: $medium;
+	margin: 0 auto;
+	@include mobile {
+		padding: 0 1.5rem;
+	}
 }
 
 // Visibility
 .only-for-desktop {
-  @include mobile {
-    display: none;
-  }
+	@include mobile {
+		display: none;
+	}
 }
 .only-for-mobile {
-  display: none;
-  @include mobile {
-    display: block !important;
-  }
+	display: none;
+	@include mobile {
+		display: block !important;
+	}
 }
