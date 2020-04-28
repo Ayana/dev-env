@@ -23,7 +23,7 @@ $font-sans-serif: -apple-system, BlinkMacSystemFont, 'Lato', 'Noto Sans JP', 'Hi
 $bold: 800;
 $heavy: 900;
 
-// Media Query Breadpoint
+// Media Query Breakpoint
 $small: 320px;
 $medium: 768px;
 $large: 1024px;
@@ -95,7 +95,6 @@ html {
 		}
 		@include desktop {
 			a:hover,
-			,
 			a img:hover {
 				opacity: 0.7;
 			}
