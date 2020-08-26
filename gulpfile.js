@@ -1,5 +1,5 @@
 // const gulp = require('gulp');
-const { src, dest, task, watch, series, parallel } = require('gulp') //When use this line instead of above line, change method without [gulp.] ex. gulp.dest => dest
+const {src, dest, task, watch, series, parallel} = require('gulp') //When use this line instead of above line, change method without [gulp.] ex. gulp.dest => dest
 const sass = require('gulp-sass')
 const concat = require('gulp-concat')
 const minify = require('gulp-minify')
@@ -9,18 +9,23 @@ const browserSync = require('browser-sync').create()
 const imagemin = require('gulp-imagemin')
 const mozjpeg = require('imagemin-mozjpeg')
 const pngquant = require('imagemin-pngquant')
-// const babel = require('gulp-babel')
 
 // CSS bundle, minify task
 function cssTask() {
 	return (
-		src('./src/scss/app.scss')
+		src('./src/scss/*.scss')
 			// .pipe(sass().on('error', sass.logError))
-			.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+			.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 			.pipe(autoprefixer())
 			.pipe(dest('./dist/css'))
 			.pipe(browserSync.stream())
 	)
+}
+
+// HTML task
+function htmlTask() {
+	return src('./src/index.html').pipe(dest('./dist/'))
+	// .pipe(browserSync.stream())
 }
 
 // JS Babel & minify task
@@ -28,7 +33,7 @@ function jsTask() {
 	return (
 		src('./src/js/**/*.js')
 			.pipe(concat('app.js'))
-			.pipe(babel({ presets: ['@babel/preset-env'] }))
+			.pipe(babel({presets: ['@babel/preset-env']}))
 			.pipe(minify())
 			// .pipe(minify({ ext: { src: '-debug.js', min: '.js' }, ignoreFiles: ['-min.js'] }))
 			.pipe(dest('./dist/js'))
@@ -38,7 +43,7 @@ function jsTask() {
 
 // Image minify task
 function imageTask() {
-	return src('./src/images/*')
+	return src('./src/images/**/*')
 		.pipe(
 			imagemin([
 				pngquant({
@@ -49,7 +54,8 @@ function imageTask() {
 				}),
 			])
 		)
-		.pipe(dest('./dist/images/'))
+		.pipe(dest('./dist/images'))
+		.pipe(browserSync.stream())
 }
 
 // Watch task
@@ -61,13 +67,13 @@ function watchTask() {
 	})
 	watch('./src/scss/**/*.scss', cssTask)
 	watch('./src/js/*.js', jsTask)
-	watch('./dist/*.html').on('change', browserSync.reload)
-	// watch('./src/images/*', imagemin); //Use when needed
+	watch('./src/*.html', htmlTask).on('change', browserSync.reload)
+	// watch('./dist/*.html').on('change', browserSync.reload)
 	// watch('./dest/js/*.js').on('change', reloadBrowser); //Use when change js files directly
 }
 
-// Export tasks
-exports.image = imageTask
+// Export tasks  -- To start task, "gulp TASKNAME"
+exports.image = imageTask //ig. "gulp image"
 exports.style = cssTask
 exports.js = jsTask
 exports.watch = watchTask
