@@ -9,6 +9,7 @@ const browserSync = require('browser-sync').create()
 const imagemin = require('gulp-imagemin')
 const mozjpeg = require('imagemin-mozjpeg')
 const pngquant = require('imagemin-pngquant')
+const fileinclude = require('gulp-file-include')
 
 // CSS bundle, minify task
 function cssTask() {
@@ -43,7 +44,7 @@ function jsTask() {
 
 // Image minify task
 function imageTask() {
-	return src('./src/images/**/*')
+	return src('./src/images/*')
 		.pipe(
 			imagemin([
 				pngquant({
@@ -58,6 +59,18 @@ function imageTask() {
 		.pipe(browserSync.stream())
 }
 
+// File include task
+function fileincludeTask() {
+	return src(['./src/index.html'])
+		.pipe(
+			fileinclude({
+				prefix: '@@',
+				basepath: '@file',
+			})
+		)
+		.pipe(dest('./dist/'))
+}
+
 // Watch task
 function watchTask() {
 	browserSync.init({
@@ -65,8 +78,10 @@ function watchTask() {
 			baseDir: './dist/', //Destination folder
 		},
 	})
+	watch('./src/images/*', imageTask)
 	watch('./src/scss/**/*.scss', cssTask)
 	watch('./src/js/*.js', jsTask)
+	watch('./src/*.html', fileincludeTask).on('change', browserSync.reload)
 	watch('./src/*.html', htmlTask).on('change', browserSync.reload)
 	// watch('./dist/*.html').on('change', browserSync.reload)
 	// watch('./dest/js/*.js').on('change', reloadBrowser); //Use when change js files directly
@@ -76,7 +91,9 @@ function watchTask() {
 exports.image = imageTask //ig. "gulp image"
 exports.style = cssTask
 exports.js = jsTask
+exports.html = htmlTask
+exports.fileinclude = fileincludeTask
 exports.watch = watchTask
 
 // Default task
-exports.default = series(parallel(cssTask, jsTask), watchTask)
+exports.default = series(parallel(htmlTask, fileincludeTask, imageTask, cssTask, jsTask), watchTask)
