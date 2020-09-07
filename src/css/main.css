@@ -1,10 +1,10 @@
 @charset 'utf-8';
 
-// Reset
+/* // Reset */
 @import 'normalize';
 @import 'reset';
 
-// Styles
+/* // Styles */
 @import 'variables';
 @import 'mixin';
 @import 'base';
