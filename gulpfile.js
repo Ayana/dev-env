@@ -1,5 +1,6 @@
 // const gulp = require('gulp');
-const {src, dest, task, watch, series, parallel} = require('gulp') //When use this line instead of above line, change method without [gulp.] ex. gulp.dest => dest
+const {src, dest, watch, series, parallel} = require('gulp') //When use this line instead of above line, change method without [gulp.] ex. gulp.dest => dest
+const del = require('del')
 const sass = require('gulp-sass')
 const concat = require('gulp-concat')
 const minify = require('gulp-minify')
@@ -10,6 +11,11 @@ const imagemin = require('gulp-imagemin')
 const mozjpeg = require('imagemin-mozjpeg')
 const pngquant = require('imagemin-pngquant')
 const fileinclude = require('gulp-file-include')
+
+// Clean dist folder
+function cleanTask() {
+	return del(['./dist'])
+}
 
 // CSS bundle, minify task
 function cssTask() {
@@ -78,11 +84,10 @@ function watchTask() {
 			baseDir: './dist/', //Destination folder
 		},
 	})
-	watch('./src/images/*', imageTask)
+	watch('./src/images/**/*', imageTask)
 	watch('./src/scss/**/*.scss', cssTask)
 	watch('./src/js/*.js', jsTask)
-	watch('./src/*.html', fileincludeTask).on('change', browserSync.reload)
-	watch('./src/*.html', htmlTask).on('change', browserSync.reload)
+	watch('./src/**/*.html', fileincludeTask, htmlTask).on('change', browserSync.reload)
 	// watch('./dist/*.html').on('change', browserSync.reload)
 	// watch('./dest/js/*.js').on('change', reloadBrowser); //Use when change js files directly
 }
@@ -96,4 +101,4 @@ exports.fileinclude = fileincludeTask
 exports.watch = watchTask
 
 // Default task
-exports.default = series(parallel(htmlTask, fileincludeTask, imageTask, cssTask, jsTask), watchTask)
+exports.default = series(cleanTask, parallel(imageTask, cssTask, jsTask), htmlTask, fileincludeTask, watchTask)
