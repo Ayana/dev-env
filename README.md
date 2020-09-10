@@ -32,4 +32,4 @@ Run all tasks to develop the project
 
 ### Change History
 
-0.0.2 (Sep 2020) - Fix gulpfile.js bug, update scss structure and names<br/> 0.0.1 (Aug 2020)
+0.0.2 (Sep 10, 2020) - Fix gulpfile.js bug, update scss structure and names<br/> 0.0.1 (Aug 2020) - Initial commit
