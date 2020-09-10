@@ -1,6 +1,6 @@
-# A simple boilerplate using Gulp
+# A simple boilerplate using gulp 4
 
-This is a simple boilerplate using Gulp 4 for static website projects which are not available to use modern frameworks. For example, small companies websites, WordPress template etc.
+A simple boilerplate using <a href="https://gulpjs.com/">gulp</a>. This is made for static website projects which are not available to use modern frameworks. For example, small companies websites, WordPress template etc.
 
 ### Install
 
