@@ -22,45 +22,6 @@ A simple boilerplate with Sass using <a href="https://gulpjs.com/">gulp</a>. Mad
 npm install --save-dev gulp gulp-sass browser-sync gulp-imagemin gulp-autoprefixer imagemin-mozjpeg imagemin-pngquant gulp-minify gulp-concat gulp-babel @babel/core @babel/preset-env babel-polyfill gulp-file-include del
 ```
 
-## Folder Structure
-
-```
-my-app/
-  README.md
-  node_modules/
-  package.json
-  dist/
-    index.html
-    images/
-		css/
-			app.css
-		js/
-			app.js
-			app-min.js
-  src/
-    index.html
-    images/
-    inc/
-			footer.html
-			head.html
-			header.html
-		scss/
-			app.css
-			base/
-				_base.scss
-				_mixin.scss
-				_variables.scss
-			components/
-				_footer.scss
-				_header.scss
-				_styles.scss
-			modules/
-				_normalize.scss
-				_reset.scss
-		js/
-			main.js
-```
-
 ## Default Run
 
 Run all tasks to build production files `gulp`
