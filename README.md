@@ -2,7 +2,7 @@
 
 A simple boilerplate with Sass using <a href="https://gulpjs.com/">gulp</a>. Made for static website projects which are not available to use modern frameworks. For example, small companies' websites, WordPress templates, etc.
 
-### What's in the box?
+## Package List
 
 - <a href="https://github.com/sindresorhus/del#readme">del</a>
 - <a href="https://github.com/dlmanning/gulp-sass#readme">gulp-sass</a>
@@ -16,17 +16,56 @@ A simple boilerplate with Sass using <a href="https://gulpjs.com/">gulp</a>. Mad
 - <a href="https://github.com/imagemin/imagemin-pngquant#readme">imagemin-pngquant</a>
 - <a href="https://github.com/haoxins/gulp-file-include#readme">gulp-file-include</a>
 
-### Install Packages
+## Install Packages
 
 ```
 npm install --save-dev gulp gulp-sass browser-sync gulp-imagemin gulp-autoprefixer imagemin-mozjpeg imagemin-pngquant gulp-minify gulp-concat gulp-babel @babel/core @babel/preset-env babel-polyfill gulp-file-include del
 ```
 
-### Default
+## Folder Structure
+
+```
+my-app/
+  README.md
+  node_modules/
+  package.json
+  dist/
+    index.html
+    images/
+		css/
+			app.css
+		js/
+			app.js
+			app-min.js
+  src/
+    index.html
+    images/
+    inc/
+			footer.html
+			head.html
+			header.html
+		scss/
+			app.css
+			base/
+				_base.scss
+				_mixin.scss
+				_variables.scss
+			components/
+				_footer.scss
+				_header.scss
+				_styles.scss
+			modules/
+				_normalize.scss
+				_reset.scss
+		js/
+			main.js
+```
+
+## Default Run
 
 Run all tasks to build production files `gulp`
 
-### Each tasks
+## Each tasks
 
 - Clean `gulp clean`
 - CSS bundle, minify task `gulp css`

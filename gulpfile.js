@@ -1,5 +1,5 @@
 // const gulp = require('gulp');
-const {src, dest, watch, series, parallel} = require('gulp') //When use this line instead of above line, change method without [gulp.] ex. gulp.dest => dest
+const { src, dest, watch, series, parallel } = require('gulp') //When use this line instead of above line, change method without [gulp.] ex. gulp.dest => dest
 const del = require('del')
 const sass = require('gulp-sass')
 const concat = require('gulp-concat')
@@ -22,7 +22,7 @@ function cssTask() {
 	return (
 		src('./src/scss/*.scss')
 			// .pipe(sass().on('error', sass.logError))
-			.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+			.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
 			.pipe(autoprefixer())
 			.pipe(dest('./dist/css'))
 			.pipe(browserSync.stream())
@@ -40,7 +40,7 @@ function jsTask() {
 	return (
 		src('./src/js/**/*.js')
 			.pipe(concat('app.js'))
-			.pipe(babel({presets: ['@babel/preset-env']}))
+			.pipe(babel({ presets: ['@babel/preset-env'] }))
 			.pipe(minify())
 			// .pipe(minify({ ext: { src: '-debug.js', min: '.js' }, ignoreFiles: ['-min.js'] }))
 			.pipe(dest('./dist/js'))
@@ -50,7 +50,7 @@ function jsTask() {
 
 // Image minify task
 function imageTask() {
-	return src('./src/images/*')
+	return src('./src/images/**/*')
 		.pipe(
 			imagemin([
 				pngquant({
