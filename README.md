@@ -2,7 +2,7 @@
 
 A simple boilerplate with Sass using <a href="https://gulpjs.com/">gulp</a>. Made for static website projects which are not available to use modern frameworks. For example, small companies' websites, WordPress templates, etc.
 
-### Install
+### Install Packages
 
 ```
 npm install --save-dev gulp gulp-sass browser-sync gulp-imagemin gulp-autoprefixer imagemin-mozjpeg imagemin-pngquant gulp-minify gulp-concat gulp-babel @babel/core @babel/preset-env babel-polyfill gulp-file-include del
@@ -10,9 +10,7 @@ npm install --save-dev gulp gulp-sass browser-sync gulp-imagemin gulp-autoprefix
 
 ### Default
 
-Run all tasks to develop the project
-
-`gulp`
+Run all tasks to build production files `gulp`
 
 ### Each tasks
 
