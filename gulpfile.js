@@ -11,6 +11,9 @@ const imagemin = require('gulp-imagemin')
 const mozjpeg = require('imagemin-mozjpeg')
 const pngquant = require('imagemin-pngquant')
 const fileinclude = require('gulp-file-include')
+const browserify = require('browserify')
+const babelify = require('babelify')
+const source = require('vinyl-source-stream')
 
 // Clean dist folder
 function cleanTask() {
@@ -31,21 +34,33 @@ function cssTask() {
 
 // HTML task
 function htmlTask() {
-	return src('./src/index.html').pipe(dest('./dist/'))
+	return src('./src/*.html').pipe(dest('./dist/'))
 	// .pipe(browserSync.stream())
 }
 
-// JS Babel & minify task
+// // JS Babel & minify task
+// function jsTask() {
+// 	return (
+// 		src('./src/js/**/*.js')
+// 			.pipe(concat('app.js'))
+// 			.pipe(babel({ presets: ['@babel/preset-env'] }))
+// 			.pipe(minify())
+// 			// .pipe(minify({ ext: { src: '-debug.js', min: '.js' }, ignoreFiles: ['-min.js'] }))
+// 			.pipe(dest('./dist/js'))
+// 			.pipe(browserSync.stream())
+// 	)
+// }
+
+// browserify task
 function jsTask() {
 	return (
-		src('./src/js/**/*.js')
-			.pipe(concat('app.js'))
-			.pipe(babel({ presets: ['@babel/preset-env'] }))
-			.pipe(minify())
-			// .pipe(minify({ ext: { src: '-debug.js', min: '.js' }, ignoreFiles: ['-min.js'] }))
+		browserify({ entries: ['./src/js/**/*.js'] })
+			// .transform(babelify, { presets: ['@babel/preset-env'] })
+			.bundle()
+			.pipe(source('app.js'))
 			.pipe(dest('./dist/js'))
-			.pipe(browserSync.stream())
 	)
+	// .pipe(browserSync.stream())
 }
 
 // Image minify task
@@ -67,7 +82,7 @@ function imageTask() {
 
 // File include task
 function fileincludeTask() {
-	return src(['./src/index.html'])
+	return src(['./src/*.html'])
 		.pipe(
 			fileinclude({
 				prefix: '@@',

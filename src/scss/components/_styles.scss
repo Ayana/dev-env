@@ -9,3 +9,14 @@
 	font-size: 0.8rem;
 	text-align: center;
 }
+
+// Barba
+.barba-once {
+	opacity: 0;
+}
+.barba-once-active {
+	transition: opacity 3s linear;
+}
+.barba-once-to {
+	opacity: 1;
+}
