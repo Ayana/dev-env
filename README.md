@@ -1,6 +1,6 @@
 # Simple boilerplate using gulp 4
 
-A simple boilerplate with Sass using <a href="https://gulpjs.com/">gulp</a>. Made for static website projects which are not available to use modern frameworks. For example, small companies' websites, WordPress templates, etc.
+A simple boilerplate with Sass using <a href="https://gulpjs.com/">gulp</a>. Made for static website projects which are not available to use modern frameworks. ex. small companies' websites, WordPress templates, etc.
 
 ### Package List
 
