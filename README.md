@@ -1,6 +1,20 @@
-# Simple boilerplate with Sass using gulp 4
+# Simple boilerplate using gulp 4
 
 A simple boilerplate with Sass using <a href="https://gulpjs.com/">gulp</a>. Made for static website projects which are not available to use modern frameworks. For example, small companies' websites, WordPress templates, etc.
+
+### What's in the box?
+
+- <a href="https://github.com/sindresorhus/del#readme">del</a>
+- <a href="https://github.com/dlmanning/gulp-sass#readme">gulp-sass</a>
+- <a href="https://github.com/gulp-community/gulp-concat#readme">gulp-concat</a>
+- <a href="https://github.com/hustxiaoc/gulp-minify">gulp-minify</a>
+- <a href="https://github.com/sindresorhus/gulp-autoprefixer#readme">gulp-autoprefixer</a>
+- <a href="https://github.com/babel/gulp-babel#readme">gulp-babel</a>
+- <a href="https://github.com/BrowserSync/browser-sync">browser-sync</a>
+- <a href="https://github.com/sindresorhus/gulp-imagemin#readme">gulp-imagemin</a>
+- <a href="https://github.com/imagemin/imagemin-mozjpeg#readme">imagemin-mozjpeg</a>
+- <a href="https://github.com/imagemin/imagemin-pngquant#readme">imagemin-pngquant</a>
+- <a href="https://github.com/haoxins/gulp-file-include#readme">gulp-file-include</a>
 
 ### Install Packages
 
