@@ -10,6 +10,7 @@
 		"browser-sync": "^2.26.12",
 		"del": "^5.1.0",
 		"gulp": "^4.0.2",
+		"gulp-assetpaths": "^0.3.3",
 		"gulp-autoprefixer": "^7.0.1",
 		"gulp-babel": "^8.0.0",
 		"gulp-concat": "^2.6.1",
@@ -17,6 +18,7 @@
 		"gulp-imagemin": "^7.1.0",
 		"gulp-minify": "^3.1.0",
 		"gulp-sass": "^4.1.0",
+		"gulp-sourcemaps": "^3.0.0",
 		"imagemin-mozjpeg": "^8.0.0",
 		"imagemin-pngquant": "^8.0.0"
 	},

@@ -15,27 +15,27 @@ A simple boilerplate with Sass using <a href="https://gulpjs.com/">gulp</a>. Mad
 - <a href="https://github.com/imagemin/imagemin-mozjpeg#readme">imagemin-mozjpeg</a>
 - <a href="https://github.com/imagemin/imagemin-pngquant#readme">imagemin-pngquant</a>
 - <a href="https://github.com/haoxins/gulp-file-include#readme">gulp-file-include</a>
+- <a href="https://github.com/qwales1/gulp-assetpaths#readme">gulp-assetpaths</a>
+- <a href="https://github.com/gulp-sourcemaps/gulp-sourcemaps">gulp-sourcemaps</a>
 
 ### Install Packages
 
 ```
-npm install --save-dev gulp gulp-sass browser-sync gulp-imagemin gulp-autoprefixer imagemin-mozjpeg imagemin-pngquant gulp-minify gulp-concat gulp-babel @babel/core @babel/preset-env babel-polyfill gulp-file-include del
+npm install --save-dev gulp gulp-sass browser-sync gulp-imagemin gulp-autoprefixer imagemin-mozjpeg imagemin-pngquant gulp-minify gulp-concat gulp-babel @babel/core @babel/preset-env babel-polyfill gulp-file-include del gulp-assetpaths gulp-sourcemaps
 ```
 
 ### Default Run
 
 Run all tasks to build production files `gulp`
 
-### Each tasks
+### Run each task
 
 - Clean `gulp clean`
-- CSS bundle, minify task `gulp css`
-- HTML `gulp html`
-- JS Babel & minify task `gulp js`
-- Image minify task `gulp image`
-- File include `gulp fileinclude`
-- Watch above `gulp watch`
+- Image `gulp image`
+- CSS `gulp css`
+- JS `gulp js`
+- Watch `gulp watch`
 
 ### Change History
 
-0.0.3 (Oct 2020) - Organize file structure<br/>0.0.2 (Sep 2020) - Fix gulpfile.js bug, update scss structure and names<br/> 0.0.1 (Aug 2020) - Initial commit
+0.0.4 (Dec 2020) - Add sourcemaps and assetpaths, fix favicon, update gulpfile.js<br/>0.0.3 (Oct 2020) - Organize file structure<br/>0.0.2 (Sep 2020) - Fix gulpfile.js bug, update scss structure and names<br/> 0.0.1 (Aug 2020) - Initial commit
